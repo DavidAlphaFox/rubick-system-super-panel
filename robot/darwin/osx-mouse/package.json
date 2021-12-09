@@ -1,0 +1,67 @@
+{
+  "_from": "osx-mouse",
+  "_id": "osx-mouse@2.0.0",
+  "_inBundle": false,
+  "_integrity": "sha512-7RGBcHCLbaCDGBzC3GvOYFDaw3zuiYwhsDJKULQEljhwhAgCArx5lHMZztzzb4jUyMWPRFDUeTi7RVtGi68b9A==",
+  "_location": "/osx-mouse",
+  "_phantomChildren": {},
+  "_requested": {
+    "type": "tag",
+    "registry": true,
+    "raw": "osx-mouse",
+    "name": "osx-mouse",
+    "escapedName": "osx-mouse",
+    "rawSpec": "",
+    "saveSpec": null,
+    "fetchSpec": "latest"
+  },
+  "_requiredBy": [
+    "#USER",
+    "/"
+  ],
+  "_resolved": "https://registry.npmjs.org/osx-mouse/-/osx-mouse-2.0.0.tgz",
+  "_shasum": "d7b07e8570118680e7c763057c5da92550be9c7e",
+  "_spec": "osx-mouse",
+  "_where": "/Users/muwoo/mywork/rubick/rubick-system-super-panel",
+  "bugs": {
+    "url": "https://github.com/kapetan/osx-mouse/issues"
+  },
+  "bundleDependencies": false,
+  "dependencies": {
+    "bindings": "^1.5.0",
+    "nan": "^2.14.1"
+  },
+  "deprecated": false,
+  "description": "Mouse tracking for OS X",
+  "devDependencies": {
+    "standard": "^14.3.4"
+  },
+  "gypfile": true,
+  "homepage": "https://github.com/kapetan/osx-mouse",
+  "keywords": [
+    "track",
+    "mouse",
+    "events",
+    "osx",
+    "native",
+    "screen",
+    "display",
+    "position"
+  ],
+  "license": "MIT",
+  "main": "index.js",
+  "name": "osx-mouse",
+  "os": [
+    "darwin"
+  ],
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/kapetan/osx-mouse.git"
+  },
+  "scripts": {
+    "install": "node-gyp rebuild",
+    "lint": "standard",
+    "test": "node test/parallel-destroy && node test/parallel-unref && node test/sequence-destroy && node test/sequence-unref"
+  },
+  "version": "2.0.0"
+}
