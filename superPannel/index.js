@@ -1,4 +1,4 @@
-const {ipcRenderer, remote, clipboard} = require('electron')
+const {ipcRenderer, remote, clipboard, nativeImage} = require('electron')
 const rp = require("request-promise");
 const path = require('path');
 const fs = require('fs');
@@ -6,6 +6,7 @@ const { spawn } = require ('child_process');
 const mineType = require("mime-types");
 
 window.openPlugin = ({plugin, feature, cmd, data}) => {
+  console.log(data);
   ipcRenderer.send('msg-trigger', {
     type: 'openPlugin',
     plugin:{
@@ -20,6 +21,20 @@ window.openPlugin = ({plugin, feature, cmd, data}) => {
   })
 }
 
+function isPlainObject(obj) {
+  return isObject(obj) && Object.getPrototypeOf(obj) == Object.prototype;
+}
+
+function isObject(obj) {
+  return typeof obj == "object";
+}
+
+const isArray =
+  Array.isArray ||
+  function(object) {
+    return object instanceof Array;
+  };
+
 function extend(target, source, deep) {
   for (let key in source)
     if (deep && (isPlainObject(source[key]) || isArray(source[key]))) {
@@ -28,6 +43,12 @@ function extend(target, source, deep) {
       if (isArray(source[key]) && !isArray(target[key])) target[key] = [];
       extend(target[key], source[key], deep);
     } else if (source[key] !== undefined) target[key] = source[key];
+}
+
+function formatReg(regStr) {
+  const flags = regStr.replace(/.*\/([gimy]*)$/, "$1");
+  const pattern = flags.replace(new RegExp("^/(.*?)/" + flags + "$"), "$1");
+  return new RegExp(pattern, flags);
 }
 
 new Vue({
@@ -93,6 +114,7 @@ new Vue({
     // 简单唤起超级面板
     ipcRenderer.on('trigger-super-panel', (e, args) => {
       this.selectData = args;
+      console.log(this.selectData);
       const ext = path.extname(this.selectData.fileUrl);
       // 剪切板只有文本时，显示翻译
       if (!this.selectData.fileUrl) {
@@ -103,11 +125,11 @@ new Vue({
         (this.selectData.optionPlugin || []).forEach(plugin => {
           plugin.features.forEach(fe => {
             fe.cmds.forEach(cmd => {
-              if (cmd.type === 'regex' && eval(cmd.match).test(word)) {
+              if (cmd.type === 'regex' && formatReg(cmd.match).test(word)) {
                 this.targetOptions.push({
                   type: 'ext',
                   name: cmd.label,
-                  icon: plugin.icon,
+                  icon: plugin.logo,
                   click: () => {
                     window.openPlugin({
                       cmd: cmd,
@@ -122,7 +144,7 @@ new Vue({
                 this.targetOptions.push({
                   type: 'ext',
                   name: cmd.label,
-                  icon: plugin.icon,
+                  icon: plugin.logo,
                   click: () => {
                     window.openPlugin({
                       cmd: cmd,
@@ -153,9 +175,9 @@ new Vue({
                 this.targetOptions.push({
                   type: 'ext',
                   name: cmd.label,
-                  icon: plugin.icon,
+                  icon: plugin.logo,
                   click: (fileUrl) => {
-                    const base64 = this.fileToBase64(fileUrl);
+                    const base64 = nativeImage.createFromPath(fileUrl.replace('file://', '')).toDataURL();
                     window.openPlugin({
                       cmd: cmd,
                       plugin: plugin,
@@ -166,11 +188,11 @@ new Vue({
                 })
               }
               // 如果是文件，且符合文件正则类型
-              if (cmd.type === 'file' && new RegExp(cmd.match).test(ext)) {
+              if (cmd.type === 'file' && formatReg(cmd.match).test(ext)) {
                 this.targetOptions.push({
                   type: 'ext',
                   name: cmd.label,
-                  icon: '',
+                  icon: plugin.logo,
                   click: () => {
                     window.openPlugin({
                       cmd: cmd,

@@ -1,8 +1,5 @@
 const superPanel = require("./panel-window");
 const os = require("os");
-const http = require('http');
-
-// const rubickBase = newRubickBase();
 
 const isMacOS = os.type() === "Darwin";
 
@@ -46,15 +43,17 @@ const getMouse = () => {
 module.exports = () => {
   return {
     async onReady(ctx) {
-      const {ipcMain, clipboard, ipcRenderer} = ctx;
+      const {clipboard} = ctx;
+      // 初始化超级面板 window
       const panelInstance = superPanel(ctx);
       panelInstance.init();
+
+      // 生成鼠标监听事件
       const mouse = getMouse();
-      let down_time = 0;
       let isPress = false;
       mouse.on("right-down", (x, y) => {
         isPress = true;
-        down_time = Date.now();
+        // 3000 ms 后触发超级面板
         setTimeout(async () => {
           if (isPress) {
             const copyResult = await getSelectedContent(clipboard);
@@ -66,15 +65,12 @@ module.exports = () => {
               ...copyResult,
               optionPlugin: localPlugins,
             });
-            // translate(copyResult.text, win.webContents);
             win.setPosition(parseInt(x), parseInt(y));
             win.setAlwaysOnTop(true);
             win.setVisibleOnAllWorkspaces(true, {visibleOnFullScreen: true});
             win.focus();
             win.setVisibleOnAllWorkspaces(false, {visibleOnFullScreen: true});
             win.show();
-
-            // todo 翻译文案
           }
         }, 300);
       });
@@ -84,29 +80,3 @@ module.exports = () => {
     },
   }
 }
-
-// function translate (msg, webContents) {
-//   const params = encodeURI(
-//     `q=${msg}&keyfrom=neverland&key=969918857&type=data&doctype=json&version=1.1`
-//   );
-//   return http.get(`http://fanyi.youdao.com/openapi.do?${params}`, (res) => {
-//     let data = '';
-//
-//     // called when a data chunk is received.
-//     res.on('data', (chunk) => {
-//       data += chunk;
-//     });
-//
-//     // called when the complete response is received.
-//     res.on('end', () => {
-//       webContents.executeJavaScript(`window.setTranslateData(${JSON.stringify({
-//         ...JSON.parse(data),
-//         src: msg,
-//       })})`);
-//     });
-//   }).on("error", (err) => {
-//     console.log(err);
-//     webContents.executeJavaScript(`window.setTranslateData()`);
-//     // this.$set(this.selectData, 'translate', null);
-//   })
-// }
