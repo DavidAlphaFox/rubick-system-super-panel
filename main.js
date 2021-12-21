@@ -4,7 +4,7 @@ const os = require("os");
 const isMacOS = os.type() === "Darwin";
 
 function getSelectedContent(clipboard) {
-  const robot = os.type() === "Darwin" ? require("./robot/darwin/robotjs") : {};
+  const robot = os.type() === "Darwin" ? require("./robot/darwin/robotjs") : require("./robot/win/robotjs");
 
   return new Promise((resolve) => {
     const lastText = clipboard.readText('clipboard');
@@ -37,13 +37,17 @@ function getSelectedContent(clipboard) {
 }
 
 const getMouse = () => {
-  if (isMacOS) return os.type() === "Darwin" ? require('./robot/darwin/osx-mouse')() : () => {};
+  return os.type() === "Darwin" ? require('./robot/darwin/osx-mouse')() : require('./robot/win/win-mouse')();
+}
+
+const getPos = (screen, point) => {
+  return isMacOS ? point : screen.screenToDipPoint({x: point.x, y: point.y});
 }
 
 module.exports = () => {
   return {
     async onReady(ctx) {
-      const {clipboard} = ctx;
+      const {clipboard, screen} = ctx;
       // 初始化超级面板 window
       const panelInstance = superPanel(ctx);
       panelInstance.init();
@@ -65,7 +69,8 @@ module.exports = () => {
               ...copyResult,
               optionPlugin: localPlugins,
             });
-            win.setPosition(parseInt(x), parseInt(y));
+            const pos = getPos(screen, {x, y});
+            win.setPosition(parseInt(pos.x), parseInt(pos.y));
             win.setAlwaysOnTop(true);
             win.setVisibleOnAllWorkspaces(true, {visibleOnFullScreen: true});
             win.focus();

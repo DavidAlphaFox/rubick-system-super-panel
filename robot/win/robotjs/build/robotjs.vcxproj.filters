@@ -1,0 +1,115 @@
+<?xml version="1.0" encoding="utf-8"?>
+<Project ToolsVersion="4.0" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <ItemGroup>
+    <Filter Include="..">
+      <UniqueIdentifier>{739DB09A-CC57-A953-A6CF-F64FA08E4FA7}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="..\src">
+      <UniqueIdentifier>{8CDEE807-BC53-E450-C8B8-4DEBB66742D4}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="..">
+      <UniqueIdentifier>{739DB09A-CC57-A953-A6CF-F64FA08E4FA7}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="..\src">
+      <UniqueIdentifier>{8CDEE807-BC53-E450-C8B8-4DEBB66742D4}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="..">
+      <UniqueIdentifier>{739DB09A-CC57-A953-A6CF-F64FA08E4FA7}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="..\src">
+      <UniqueIdentifier>{8CDEE807-BC53-E450-C8B8-4DEBB66742D4}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="..">
+      <UniqueIdentifier>{739DB09A-CC57-A953-A6CF-F64FA08E4FA7}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="..\src">
+      <UniqueIdentifier>{8CDEE807-BC53-E450-C8B8-4DEBB66742D4}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="..">
+      <UniqueIdentifier>{739DB09A-CC57-A953-A6CF-F64FA08E4FA7}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="..\src">
+      <UniqueIdentifier>{8CDEE807-BC53-E450-C8B8-4DEBB66742D4}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="..">
+      <UniqueIdentifier>{739DB09A-CC57-A953-A6CF-F64FA08E4FA7}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="..\src">
+      <UniqueIdentifier>{8CDEE807-BC53-E450-C8B8-4DEBB66742D4}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="..">
+      <UniqueIdentifier>{739DB09A-CC57-A953-A6CF-F64FA08E4FA7}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="..\src">
+      <UniqueIdentifier>{8CDEE807-BC53-E450-C8B8-4DEBB66742D4}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="..">
+      <UniqueIdentifier>{739DB09A-CC57-A953-A6CF-F64FA08E4FA7}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="..\src">
+      <UniqueIdentifier>{8CDEE807-BC53-E450-C8B8-4DEBB66742D4}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="..">
+      <UniqueIdentifier>{739DB09A-CC57-A953-A6CF-F64FA08E4FA7}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="..\src">
+      <UniqueIdentifier>{8CDEE807-BC53-E450-C8B8-4DEBB66742D4}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="C:">
+      <UniqueIdentifier>{7B735499-E5DD-1C2B-6C26-70023832A1CF}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="C:\project">
+      <UniqueIdentifier>{8F53F332-2BD7-5830-9500-C0173538916B}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="C:\project\rubick-system-super-panel">
+      <UniqueIdentifier>{E7FD28A1-0075-8699-72CC-EC52D09AFC80}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="C:\project\rubick-system-super-panel\node_modules">
+      <UniqueIdentifier>{56DF7A98-063D-FB9D-485C-089023B4C16A}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="C:\project\rubick-system-super-panel\node_modules\_node-gyp@8.4.1@node-gyp">
+      <UniqueIdentifier>{98C910DD-3825-32B7-6AF5-8AB630E1258A}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="C:\project\rubick-system-super-panel\node_modules\_node-gyp@8.4.1@node-gyp\src">
+      <UniqueIdentifier>{8CDEE807-BC53-E450-C8B8-4DEBB66742D4}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="..">
+      <UniqueIdentifier>{739DB09A-CC57-A953-A6CF-F64FA08E4FA7}</UniqueIdentifier>
+    </Filter>
+  </ItemGroup>
+  <ItemGroup>
+    <ClCompile Include="..\src\robotjs.cc">
+      <Filter>..\src</Filter>
+    </ClCompile>
+    <ClCompile Include="..\src\deadbeef_rand.c">
+      <Filter>..\src</Filter>
+    </ClCompile>
+    <ClCompile Include="..\src\mouse.c">
+      <Filter>..\src</Filter>
+    </ClCompile>
+    <ClCompile Include="..\src\keypress.c">
+      <Filter>..\src</Filter>
+    </ClCompile>
+    <ClCompile Include="..\src\keycode.c">
+      <Filter>..\src</Filter>
+    </ClCompile>
+    <ClCompile Include="..\src\screen.c">
+      <Filter>..\src</Filter>
+    </ClCompile>
+    <ClCompile Include="..\src\screengrab.c">
+      <Filter>..\src</Filter>
+    </ClCompile>
+    <ClCompile Include="..\src\snprintf.c">
+      <Filter>..\src</Filter>
+    </ClCompile>
+    <ClCompile Include="..\src\MMBitmap.c">
+      <Filter>..\src</Filter>
+    </ClCompile>
+    <ClCompile Include="C:\project\rubick-system-super-panel\node_modules\_node-gyp@8.4.1@node-gyp\src\win_delay_load_hook.cc">
+      <Filter>C:\project\rubick-system-super-panel\node_modules\_node-gyp@8.4.1@node-gyp\src</Filter>
+    </ClCompile>
+    <None Include="..\binding.gyp">
+      <Filter>..</Filter>
+    </None>
+  </ItemGroup>
+</Project>

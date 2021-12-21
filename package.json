@@ -1,7 +1,7 @@
 {
   "name": "rubick-system-super-panel",
   "pluginName": "超级面板",
-  "version": "1.0.4",
+  "version": "1.0.5",
   "description": "超级面板，长按右击可唤起",
   "main": "index.html",
   "entry": "main.js",
@@ -19,7 +19,7 @@
     }
   ],
   "scripts": {
-    "rebuild": "npm rebuild --runtime=electron --target=13.6.2 --disturl=https://atom.io/download/atom-shell --abi=83"
+    "rebuild": ".\\node_modules\\.bin\\electron-rebuild.cmd -m .\\node_modules\\win-mouse"
   },
   "repository": {
     "type": "git",
@@ -32,12 +32,12 @@
   },
   "homepage": "https://github.com/rubickCenter/rubick-system-super-panel#readme",
   "dependencies": {
+    "bindings": "^1.5.0",
     "mime-types": "^2.1.34",
-    "request": "^2.88.2",
-    "request-promise": "^4.2.6",
     "nan": "^2.14.0",
     "node-abi": "^2.13.0",
     "prebuild-install": "^5.3.3",
-    "bindings": "^1.5.0"
+    "request": "^2.88.2",
+    "request-promise": "^4.2.6"
   }
 }
